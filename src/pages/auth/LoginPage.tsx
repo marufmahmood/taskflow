@@ -1,44 +1,54 @@
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-100">
-      <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-lg">
+    <div className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
+      <Card className="w-full max-w-md p-8">
         <h1 className="text-3xl font-bold text-center text-blue-600">
           TaskFlow
         </h1>
 
-        <p className="mt-2 text-center text-gray-500">
-          Sign in to your account
+        <p className="text-center text-gray-500 mt-2">
+          Welcome back! Please sign in.
         </p>
 
         <form className="mt-8 space-y-5">
           <div>
-            <label className="block text-sm font-medium">Email</label>
+            <label className="block text-sm font-medium mb-2">
+              Email
+            </label>
 
-            <input
+            <Input
               type="email"
               placeholder="Enter your email"
-              className="mt-2 w-full rounded-lg border p-3 outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium">Password</label>
+            <label className="block text-sm font-medium mb-2">
+              Password
+            </label>
 
-            <input
+            <Input
               type="password"
               placeholder="Enter your password"
-              className="mt-2 w-full rounded-lg border p-3 outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full rounded-lg bg-blue-600 py-3 font-semibold text-white hover:bg-blue-700"
-          >
+          <Button className="w-full">
             Login
-          </button>
+          </Button>
         </form>
-      </div>
+
+        <p className="text-center text-sm text-gray-500 mt-6">
+          Don't have an account?{" "}
+          <span className="text-blue-600 font-medium cursor-pointer">
+            Sign Up
+          </span>
+        </p>
+      </Card>
     </div>
   );
 }
