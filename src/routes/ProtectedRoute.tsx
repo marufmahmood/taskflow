@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { auth } from "@/firebase/firebase";
+import { useAuth } from "@/contexts/AuthContext";
 
 type Props = {
   children: React.ReactNode;
@@ -7,7 +7,17 @@ type Props = {
 
 export default function ProtectedRoute({ children }: Props) {
 
-  if (!auth.currentUser) {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+
+  if (!user) {
     return <Navigate to="/" replace />;
   }
 

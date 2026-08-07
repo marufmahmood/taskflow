@@ -4,8 +4,10 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { signup } from "@/services/auth.service";
+import { createUserProfile } from "@/services/user.service";
 
 export default function SignupPage() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +23,16 @@ export default function SignupPage() {
 
     try {
       await signup(email, password);
+      
+      await createUserProfile({
+        name,
+        email,
+        role: "Member",
+        createdAt: Date.now(),
+      });
+      
       setMessage("✅ Account created successfully! You can now log in.");
+      setName("");
       setEmail("");
       setPassword("");
     } catch (err: unknown) {
@@ -47,6 +58,18 @@ export default function SignupPage() {
         </p>
 
         <form onSubmit={handleSignup} className="mt-8 space-y-5">
+          <div>
+            <label className="block text-sm font-medium mb-2">
+              Name
+            </label>
+
+            <Input
+              type="text"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium mb-2">
               Email
