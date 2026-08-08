@@ -1,11 +1,15 @@
+import ProfileSettings from "../profile/ProfileSettings";
+
 export default function SettingsPage() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Settings</h1>
+    <div className="max-w-3xl mx-auto">
 
-      <p className="text-gray-500 mt-2">
-        Settings page coming soon...
-      </p>
+      <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">
+        Settings
+      </h1>
+
+      <ProfileSettings />
+
     </div>
   );
 }

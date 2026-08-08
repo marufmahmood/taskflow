@@ -34,4 +34,6 @@ export interface Task {
   createdByName?: string;
 
   createdAt: number;
+
+  completedAt?: string;
 }

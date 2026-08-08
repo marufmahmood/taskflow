@@ -22,7 +22,7 @@ export default function SignupPage() {
     setMessage("");
 
     try {
-      await signup(email, password);
+      await signup(name, email, password);
       
       await createUserProfile({
         name,

@@ -6,11 +6,13 @@ import type { Task } from "@/types/task";
 import StatusBadge from "@/components/common/StatusBadge";
 import PriorityBadge from "@/components/common/PriorityBadge";
 import DueDateBadge from "@/components/common/DueDateBadge";
+import DueDateWarning from "@/components/common/DueDateWarning";
 import {
   Eye,
   Pencil,
   Trash2,
 } from "lucide-react";
+
 
 interface TaskCardProps {
   task: Task;
@@ -91,12 +93,23 @@ export default function TaskCard({
           </p>
 
           <div className="flex items-center justify-between mt-3">
-            <p className="text-sm text-gray-600">
-              📅 {task.dueDate || "No Due Date"}
-            </p>
 
-            <DueDateBadge dueDate={task.dueDate} />
-          </div>
+  <div>
+    <p className="text-sm text-gray-600">
+      📅 {task.dueDate || "No Due Date"}
+    </p>
+
+    <DueDateWarning
+      dueDate={task.dueDate}
+      status={task.status}
+    />
+  </div>
+
+  <DueDateBadge
+    dueDate={task.dueDate}
+  />
+
+</div>
           <div className="mt-4">
             <div className="flex justify-between text-sm mb-1">
               <span>Progress</span>

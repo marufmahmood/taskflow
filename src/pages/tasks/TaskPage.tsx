@@ -222,17 +222,25 @@ export default function TaskPage() {
   };
   const handleComplete = async (id: string) => {
   try {
+    const completedAt = new Date()
+      .toISOString()
+      .split("T")[0];
+
     await updateTask(id, {
       status: "Completed",
       progress: 100,
+      completedAt,
     });
-    toast.success("Task Completed 🎉");
-    await loadTasks();
-  } catch (error) {
-  console.error(error);
 
-  toast.error("Something went wrong!");
-}
+    toast.success("Task Completed 🎉");
+
+    await loadTasks();
+
+  } catch (error) {
+    console.error(error);
+
+    toast.error("Something went wrong!");
+  }
 };
 
   // ==========================
